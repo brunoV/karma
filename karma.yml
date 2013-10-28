@@ -1,15 +1,15 @@
 database:
   # the name of your JDBC driver
-  driverClass: org.postgresql.Driver
+  driverClass: org.sqlite.JDBC
 
-  # the username
+  # the username (Dropwizard requires it even if sqlite doesn't)
   user: system
 
   # the password
   password: manager
 
   # the JDBC URL
-  url: jdbc:postgresql://localhost:15432/wmt
+  url: jdbc:sqlite:karma.db
 
   # any properties specific to your JDBC driver:
   properties:
@@ -19,13 +19,13 @@ database:
   maxWaitForConnection: 1s
 
   # the SQL query to run when validating a connection's liveness
-  validationQuery: "/* MyService Health Check */ SELECT 1"
+  validationQuery: "/* KarmaService Health Check */ SELECT 1"
 
   # the minimum number of connections to keep open
-  minSize: 2
+  minSize: 1
 
   # the maximum number of connections to keep open
-  maxSize: 32
+  maxSize: 5
 
   # whether or not idle connections should be validated
   checkConnectionWhileIdle: false

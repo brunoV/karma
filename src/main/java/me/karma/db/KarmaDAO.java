@@ -14,27 +14,17 @@ public interface KarmaDAO {
     @SqlUpdate("create table if not exists karma (name varchar PRIMARY KEY, value integer)")
     void createKarmaTableIfNotExists();
 
-    @SqlUpdate(
-        "update karma set value = :value where name = :name;" +
-        "insert into karma (name, value) select :name, :value " +
-        "where not exists (select 1 from karma where name = :name);")
-    void set(@Bind("name") String name, @Bind("karma") int value);
+    @SqlUpdate("insert into karma (name, value) values (:name, :value)")
+    int insert(@Bind("name") String name, @Bind("value") int value);
 
-    // Simulated upsert: we bump the value, assuming the name exists. If it doesn't,
-    // the first update does nothing.
-    // The insert that follows inserts a row for the name whose karma we want to
-    // bump, setting the value to 1. If the name already exists, it does nothing.
-    @SqlUpdate(
-        "update karma set value = value + 1 where name = :name;" +
-        "insert into karma (name, value) select :name, 1 " +
-        "where not exists (select 1 from karma where name = :name);")
-    void bump(@Bind("name") String name);
+    @SqlUpdate("update karma set value = :value where name = :name")
+    int set(@Bind("name") String name, @Bind("karma") int value);
 
-    @SqlUpdate(
-        "update karma set value = value - 1 where name = :name;" +
-        "insert into karma (name, value) select :name, -1 " +
-        "where not exists (select 1 from karma where name = :name);")
-    void down(@Bind("name") String name);
+    @SqlUpdate("update karma set value = value + 1 where name = :name")
+    int bump(@Bind("name") String name);
+
+    @SqlUpdate( "update karma set value = value - 1 where name = :name")
+    int down(@Bind("name") String name);
 
     @SqlQuery("select value from karma where name = :name")
     Integer get(@Bind("name") String name);
