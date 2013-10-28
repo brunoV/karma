@@ -21,7 +21,9 @@ public class Bump {
     @GET
     @Timed
     public Karma bump(@PathParam("name") String name) {
-        karmaStore.bump(name);
+        boolean success = karmaStore.bump(name) == 1;
+
+        if (!success) karmaStore.insert(name, 1);
 
         Integer value = karmaStore.get(name);
 

@@ -5,6 +5,9 @@
 *.war
 *.ear
 
+# SQLite databases
+*.db
+
 *.iml
 .idea/
 target/

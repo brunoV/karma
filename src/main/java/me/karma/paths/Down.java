@@ -25,7 +25,10 @@ public class Down {
     @GET
     @Timed
     public Karma down(@PathParam("name") String name) {
-        karmaStore.down(name);
+        boolean success = karmaStore.down(name) == 1;
+
+        if (!success) karmaStore.insert(name, -1);
+
         Integer value = karmaStore.get(name);
 
         checkState(value != null, "Karma of [%s] cannot be null after decreasing", name);
