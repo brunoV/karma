@@ -11,7 +11,7 @@ import javax.ws.rs.core.Response;
 
 import static com.google.common.base.Objects.firstNonNull;
 
-@Path("/karma/{name}")
+@Path("/{name}")
 @Produces(MediaType.APPLICATION_JSON)
 public class KarmaResource {
 

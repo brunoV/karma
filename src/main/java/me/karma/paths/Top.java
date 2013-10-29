@@ -14,7 +14,7 @@ import java.util.List;
 
 import static com.google.common.base.Preconditions.checkState;
 
-@Path("/karma/top/{n}")
+@Path("/top/{n}")
 @Produces(MediaType.APPLICATION_JSON)
 public class Top {
 
