@@ -20,7 +20,7 @@ A web service to track the karma of things.
 
     java -jar target/karma-*.jar server karma.yml
 
-The karma service will be running on localhost, port 8080. Admin port is on port 8081.
+The service will be running on localhost, port 8080. Admin port is on port 8081.
 Requires Java 7.
 
 ## Basic API endpoints
@@ -42,7 +42,8 @@ Get the top or bottom `n` things according to their karma:
 ## Database
 
 Karma uses SQLite as its backend by default. At startup, it will create a
-database file on the service folder called `karma.db`.
+`karma.db` file in the service folder.
 
-You can change the storage engine in the `database` section of the `karma.yml`
-config file; simply pick a diferent JDBC URL string and driver.
+You can change the storage engine (among other things) in the `database`
+section of the `karma.yml` config file; simply pick a diferent JDBC URL string
+and driver.
