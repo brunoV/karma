@@ -31,8 +31,8 @@ Get the karma for a thing:
 
 Bump or decrease the karma of a thing:
 
-    GET karma/{thing}/bump
-    GET karma/{thing}/down
+    POST karma/{thing}/bump
+    POST karma/{thing}/down
 
 Get the top or bottom `n` things according to their karma:
 

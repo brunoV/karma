@@ -3,6 +3,7 @@ package me.karma.paths;
 import com.yammer.metrics.annotation.Timed;
 import me.karma.core.Karma;
 import me.karma.db.KarmaDAO;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.Valid;
 import javax.ws.rs.*;
@@ -29,7 +30,7 @@ public class KarmaResource {
 
     @POST
     @Timed
-    public Response setKarma(@Valid me.karma.core.Karma karma) {
+    public Response setKarma(@Valid Karma karma) {
         karmaStore.set(karma.getName(), karma.getValue());
         return Response.ok().build();
     }
