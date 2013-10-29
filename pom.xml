@@ -6,7 +6,7 @@
 
     <groupId>me.karma</groupId>
     <artifactId>karma</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
 
     <dependencies>
         <dependency>
