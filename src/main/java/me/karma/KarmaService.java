@@ -5,7 +5,7 @@ import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
 import com.yammer.dropwizard.jdbi.DBIFactory;
 import me.karma.db.KarmaDAO;
-import me.karma.health.KarmaHealthCheck;
+import me.karma.health.BasicHealthCheck;
 import me.karma.paths.*;
 import org.skife.jdbi.v2.DBI;
 
@@ -28,7 +28,7 @@ public class KarmaService extends Service<KarmaConfiguration> {
         environment.addResource(new Down(dao));
         environment.addResource(new Top(dao));
         environment.addResource(new Bottom(dao));
-        environment.addHealthCheck(new KarmaHealthCheck("karma-health"));
+        environment.addHealthCheck(new BasicHealthCheck(dao));
     }
 
     public static void main(String[] args) throws Exception {
