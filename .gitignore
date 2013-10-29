@@ -11,3 +11,6 @@
 *.iml
 .idea/
 target/
+
+# Don't commit log files
+logs/
