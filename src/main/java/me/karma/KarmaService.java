@@ -1,6 +1,7 @@
 package me.karma;
 
 import com.yammer.dropwizard.Service;
+import com.yammer.dropwizard.assets.AssetsBundle;
 import com.yammer.dropwizard.config.Bootstrap;
 import com.yammer.dropwizard.config.Environment;
 import com.yammer.dropwizard.jdbi.DBIFactory;
@@ -14,11 +15,12 @@ public class KarmaService extends Service<KarmaConfiguration> {
     @Override
     public void initialize(Bootstrap<KarmaConfiguration> bootstrap) {
         bootstrap.setName("karma");
+        bootstrap.addBundle(new AssetsBundle("/static/", "/"));
     }
 
     @Override
     public void run(KarmaConfiguration configuration, Environment environment) throws Exception {
-        DBI jdbi = new DBIFactory().build(environment, configuration.getDatabaseConfiguration(), "postgres");
+        DBI jdbi = new DBIFactory().build(environment, configuration.getDatabaseConfiguration(), "db");
 
         KarmaDAO dao = jdbi.onDemand(KarmaDAO.class);
         dao.createKarmaTableIfNotExists();
@@ -34,5 +36,4 @@ public class KarmaService extends Service<KarmaConfiguration> {
     public static void main(String[] args) throws Exception {
         new KarmaService().run(args);
     }
-
 }

@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 
 import static com.google.common.base.Preconditions.checkState;
 
-@Path("/karma/{name}/bump")
+@Path("/{name}/bump")
 @Produces(MediaType.APPLICATION_JSON)
 public class Bump {
     private final KarmaDAO karmaStore;

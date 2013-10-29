@@ -12,7 +12,7 @@ import javax.ws.rs.core.MediaType;
 
 import static com.google.common.base.Preconditions.checkState;
 
-@Path("/karma/{name}/down")
+@Path("/{name}/down")
 @Produces(MediaType.APPLICATION_JSON)
 public class Down {
 
