@@ -3,6 +3,7 @@ package me.karma.paths;
 import com.yammer.metrics.annotation.Timed;
 import me.karma.core.Karma;
 import me.karma.db.KarmaDAO;
+import me.karma.params.PositiveIntParam;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -21,9 +22,7 @@ public class Bottom {
 
     @GET
     @Timed
-    public List<Karma> bottom(@PathParam("n") int n) {
-        if (n <= 0) throw new WebApplicationException(Response.Status.BAD_REQUEST);
-
-        return karmaStore.bottom(n);
+    public List<Karma> bottom(@PathParam("n") PositiveIntParam n) {
+        return karmaStore.bottom(n.get());
     }
 }
