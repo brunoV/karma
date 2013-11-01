@@ -27,11 +27,4 @@ public class KarmaResource {
     public me.karma.core.Karma getKarma(@PathParam("name") String name) {
         return new Karma(name, firstNonNull(karmaStore.get(name), 0));
     }
-
-    @POST
-    @Timed
-    public Response setKarma(@Valid Karma karma) {
-        karmaStore.set(karma.getName(), karma.getValue());
-        return Response.ok().build();
-    }
 }
