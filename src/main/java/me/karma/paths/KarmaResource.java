@@ -24,7 +24,7 @@ public class KarmaResource {
 
     @GET
     @Timed
-    public me.karma.core.Karma getKarma(@PathParam("name") String name) {
+    public Karma getKarma(@PathParam("name") String name) {
         return new Karma(name, firstNonNull(karmaStore.get(name), 0));
     }
 }
