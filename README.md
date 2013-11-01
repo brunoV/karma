@@ -16,11 +16,13 @@ A web service to track the karma of things.
 
     mvn package
 
+Or, get a pre-compiled jar with all dependencies included from the releases page.
+
 ## Run
 
     java -jar target/karma-*.jar server karma.yml
 
-The service will be running on localhost, port 8080. Admin port is on port 8081.
+The service will be running on localhost, port 8080. Admin port is on 8081.
 Requires Java 7.
 
 ## Basic API endpoints
@@ -46,4 +48,4 @@ Karma uses SQLite as its backend by default. At startup, it will create a
 
 You can change the storage engine (among other things) in the `database`
 section of the `karma.yml` config file; simply pick a diferent JDBC URL string
-and driver.
+and driver class.
