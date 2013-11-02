@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="vendor/angular/angular.min.js"></script>
+    <script type="text/javascript" src="karma.js"></script>
+</head>
+
+<body>
+
+<div ng-app="karmaApp">
+    <div ng-controller="KarmaCtrl">
+
+        <h1>Karma!</h1>
+        <p>It's all that matters</p>
+
+        <div>
+            <p>
+                Search: <input type="text" ng-model="query"><br/>
+                Sort by:
+                <input type="radio" name="karmaSort" value="true" ng-model="highestFirst">Top
+                <input type="radio" name="karmaSort" value="false" ng-model="highestFirst">Bottom
+            </p>
+        </div>
+
+        <table>
+            <tr ng-repeat="point in karma | filter:query | orderBy:'value':highestFirst">
+                <td>{{point.value}}</td>
+                <td>{{point.name}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
